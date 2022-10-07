@@ -1,0 +1,20 @@
+name: "Bugfix"
+description: "Fix a bug"
+title: "Bugfix: <title>"
+labels: [bugfix]
+assignees: [cave-bjornson]
+body:
+- type: input
+  id: summary
+  attributes:
+    label: "Summary"
+    description: "Provide a general summary of the issue in the Title above."
+  validations:
+    required: true
+- type: textarea
+  id: detailed-description
+  attributes:
+    label: "Detailed description"
+    description: "Provide a detailed description of the bug."
+  validations:
+    required: false
