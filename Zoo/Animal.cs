@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------
-// <copyright file="Animal.cs" company="">
-//   
+// <copyright file="Animal.cs">
+//   Björn Agnemo NET22
 // </copyright>
 // <summary>
 //   Defines the Animal type.
