@@ -2,7 +2,6 @@
 {
     public enum Sex
     {
-        TBD,
         Male,
         Female
     }
