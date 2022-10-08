@@ -11,9 +11,20 @@ namespace Zoo
 {
     public class Animal
     {
+        public Animal()
+        {
+            Sex = (Sex)new Random().Next(2);
+        }
+
+        public Animal(string name, Sex sex)
+        {
+            this.Name = name;
+            this.Sex = sex;
+        }
+
         public string Name { get; set; } = string.Empty;
 
-        public Sex Sex { get; set; } = Sex.TBD;
+        public Sex Sex { get; private set; }
 
         public bool Alive { get; private set; } = true;
 
