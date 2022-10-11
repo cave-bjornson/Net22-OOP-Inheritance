@@ -52,7 +52,7 @@ public abstract class Animal
         return animalBaby;
     }
 
-    public void Eat(object food)
+    public void Eat(IConsumable consumable)
     {
         this.Hungry = false;
     }
@@ -67,7 +67,6 @@ public abstract class Animal
         this.Hungry = true;
         this.Tired = true;
     }
-
 
     /// <summary>
     /// Creates a new instance of <typeparamref name="T"/> that is the offspring of this
@@ -86,6 +85,7 @@ public abstract class Animal
 
     public override string ToString()
     {
-        return $"{this.GetType().Name}: {nameof(this.Name)}: {this.Name}, {nameof(this.Gender)}: {this.Gender}, {nameof(this.Alive)}: {this.Alive}, {nameof(this.Hungry)}: {this.Hungry}, {nameof(this.Tired)}: {this.Tired}";
+        return
+            $"{this.GetType().Name}: {nameof(this.Name)}: {this.Name}, {nameof(this.Gender)}: {this.Gender}, {nameof(this.Alive)}: {this.Alive}, {nameof(this.Hungry)}: {this.Hungry}, {nameof(this.Tired)}: {this.Tired}";
     }
 }
