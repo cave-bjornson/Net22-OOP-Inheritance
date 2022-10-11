@@ -1,61 +1,91 @@
-﻿// --------------------------------------------------------------------------------
-// <copyright file="Animal.cs">
-//   Björn Agnemo NET22
+﻿// <copyright file="Animal.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
-// <summary>
-//   Defines the Animal type.
-// </summary>
-// --------------------------------------------------------------------------------
 
-namespace Zoo
+namespace Zoo;
+
+public abstract class Animal
 {
-    public class Animal
+    protected Animal()
     {
-        public Animal()
+    }
+
+    protected Animal(string name, Gender gender)
+    {
+        this.Name = name;
+        this.Gender = gender;
+    }
+
+    public string Name { get; init; } = string.Empty;
+
+    public Gender Gender { get; init; }
+
+    public bool Alive { get; set; } = true;
+
+    public bool Hungry { get; private set; } = false;
+
+    public bool Tired { get; private set; } = false;
+
+    /// <summary>
+    /// Creates a new instance of Animal that is the offspring of 2 animals.
+    /// </summary>
+    /// <typeparam name="T">Derived from Animal.</typeparam>
+    /// <param name="animal1">1st parent Animal</param>
+    /// <param name="animal2">1st parent Animal</param>
+    /// <returns>A new <typeparam name="T"><typeparamref name="T"/></typeparam></returns>
+    /// <exception cref="ArgumentException">Thrown if same gender.</exception>
+    public static T Procreate<T>(T animal1, T animal2)
+        where T : Animal, new()
+    {
+        if (animal1.Gender == animal2.Gender)
         {
-            Sex = (Sex)new Random().Next(2);
+            throw new ArgumentException("Incompatible for procreation.", nameof(animal2));
         }
 
-        public Animal(string name, Sex sex)
+        string babyName = animal1.Name + animal2.Name;
+        var babyGender = (Gender)new Random().Next(2);
+        T animalBaby = new()
         {
-            this.Name = name;
-            this.Sex = sex;
-        }
+            Name = babyName,
+            Gender = babyGender,
+        };
+        return animalBaby;
+    }
 
-        public string Name { get; set; } = string.Empty;
+    public void Eat(object food)
+    {
+        this.Hungry = false;
+    }
 
-        public Sex Sex { get; private set; }
+    public void Sleep()
+    {
+        this.Tired = false;
+    }
 
-        public bool Alive { get; private set; } = true;
+    public void Move()
+    {
+        this.Hungry = true;
+        this.Tired = true;
+    }
 
-        public bool Hungry { get; private set; } = false;
 
-        public bool Tired { get; private set; } = false;
+    /// <summary>
+    /// Creates a new instance of <typeparamref name="T"/> that is the offspring of this
+    /// and an another instance of <typeparamref name="T"/>.
+    /// </summary>
+    /// <typeparam name="T">Derived from Animal.</typeparam>
+    /// <param name="otherAnimal">The other parent Animal.</param>
+    /// <returns>A new <typeparam name="T"><typeparamref name="T"/></typeparam></returns>
+    public T Mate<T>(T otherAnimal)
+        where T : Animal, new()
+    {
+        return Procreate((T)this, otherAnimal);
+    }
 
-        public void Eat(object food)
-        {
-            Hungry = false;
-        }
+    public abstract void MakeSound();
 
-        public void Sleep()
-        {
-            Tired = false;
-        }
-
-        public void Move()
-        {
-            Hungry = true;
-            Tired = true;
-        }
-
-        public virtual Animal? Mate(Animal otherAnimal)
-        {
-            if (this.GetType() == otherAnimal.GetType() && this.Sex != otherAnimal.Sex)
-            {
-                return new Animal();
-            }
-
-            return null;
-        }
+    public override string ToString()
+    {
+        return $"{this.GetType().Name}: {nameof(this.Name)}: {this.Name}, {nameof(this.Gender)}: {this.Gender}, {nameof(this.Alive)}: {this.Alive}, {nameof(this.Hungry)}: {this.Hungry}, {nameof(this.Tired)}: {this.Tired}";
     }
 }
