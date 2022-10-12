@@ -52,17 +52,17 @@ public abstract class Animal
         return animalBaby;
     }
 
-    public void Eat(IConsumable consumable)
+    public virtual void Eat(IConsumable consumable)
     {
         this.Hungry = false;
     }
 
-    public void Sleep()
+    public virtual void Sleep()
     {
         this.Tired = false;
     }
 
-    public void Move()
+    public virtual void Move()
     {
         this.Hungry = true;
         this.Tired = true;
