@@ -27,3 +27,5 @@ Vill du ha lite mer utmaning så kan du försöka implementera följande:
 - [ ]  Utöka strukturen så att det finns skillnad på däggdjur och reptiler
 - [ ]  Utöka så att det även finns märkning av djur kring om de är vilda eller tama djur
 - [ ]  Utöka så att strukturen även omfattar växter
+
+[Changelog](CHANGELOG.md)
