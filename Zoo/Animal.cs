@@ -6,15 +6,21 @@ namespace Zoo;
 
 public abstract class Animal
 {
+    protected event Action? Sound;
+
     protected Animal()
     {
     }
 
-    protected Animal(string name, Gender gender)
+    protected Animal(string species, string name, Gender gender, Action? sound = default)
     {
-        this.Name = name;
-        this.Gender = gender;
+        Species = species;
+        Name = name;
+        Gender = gender;
+        Sound = sound;
     }
+
+    public string Species { get; init; } = string.Empty;
 
     public string Name { get; init; } = string.Empty;
 
@@ -37,7 +43,7 @@ public abstract class Animal
     public static T Procreate<T>(T animal1, T animal2)
         where T : Animal, new()
     {
-        if (animal1.Gender == animal2.Gender)
+        if (animal1.Species != animal2.Species || animal1.Gender == animal2.Gender)
         {
             throw new ArgumentException("Incompatible for procreation.", nameof(animal2));
         }
@@ -48,24 +54,25 @@ public abstract class Animal
         {
             Name = babyName,
             Gender = babyGender,
+            Species = animal1.Species,
         };
         return animalBaby;
     }
 
     public virtual void Eat(IConsumable consumable)
     {
-        this.Hungry = false;
+        Hungry = false;
     }
 
     public virtual void Sleep()
     {
-        this.Tired = false;
+        Tired = false;
     }
 
     public virtual void Move()
     {
-        this.Hungry = true;
-        this.Tired = true;
+        Hungry = true;
+        Tired = true;
     }
 
     /// <summary>
@@ -81,11 +88,19 @@ public abstract class Animal
         return Procreate((T)this, otherAnimal);
     }
 
-    public abstract void MakeSound();
+    public virtual void MakeSound()
+    {
+        Sound?.Invoke();
+    }
 
     public override string ToString()
     {
-        return
-            $"{this.GetType().Name}: {nameof(this.Name)}: {this.Name}, {nameof(this.Gender)}: {this.Gender}, {nameof(this.Alive)}: {this.Alive}, {nameof(this.Hungry)}: {this.Hungry}, {nameof(this.Tired)}: {this.Tired}";
+        return @$"Class {this.GetType().Name}:
+\---{nameof(Species)}: {Species},
+\---{nameof(Name)}: {Name},
+\---{nameof(Gender)}: {Gender},
+\---{nameof(Alive)}: {Alive},
+\---{nameof(Hungry)}: {Hungry},
+\---{nameof(Tired)}: {Tired}";
     }
 }
