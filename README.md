@@ -9,11 +9,11 @@ Tänk dig att du ska skapa en grund för ett program som hanterar djur på ett z
 - [x]  Det ska finnas en basklass som är `Djur`
     - [x]  Klassen ska ha minst fem egenskaper som alla djur delar med varandra
     - [x]  Klassen ska också minst tre metoder som alla djuren delar med varandra
-- [ ]  Du ska skapa minst tre olika djur som ärver från Djur-klassen
-    - [ ]  Dessa djur ska implementera minst en ny egenskap vardera och minst en ny metod vardera
-    - [ ]  Dessa djur ska också ha defaultvärden för egenskaperna, både de som sätts i klassen och i basklassen
-    - [ ]  Alla djur måste ha en metod som heter `makeSound()` och som ska skriva ut djurets läte i consolen
-    - [ ]  Det ska finnas en constructor som vi kan användas för att skapa nya djur
+- [x]  Du ska skapa minst tre olika djur som ärver från Djur-klassen
+    - [x]  Dessa djur ska implementera minst en ny egenskap vardera och minst en ny metod vardera
+    - [x]  Dessa djur ska också ha defaultvärden för egenskaperna, både de som sätts i klassen och i basklassen
+    - [x]  Alla djur måste ha en metod som heter `makeSound()` och som ska skriva ut djurets läte i consolen
+    - [x]  Det ska finnas en constructor som vi kan användas för att skapa nya djur
 - [ ]  En av djuren du skapat ovan ska du sedan dela upp i två nya klasser som ärver från det specifika djuret.
     - [ ]  Exempelvis kanske du har Hund och då kan vi skapa Bulldog och Chihuahua. Resultatet blir arv i två nivåer.
     - [ ]  Dessa djurvarianter ska också implementera någon unik egenskap och någon unik metod eller i alla fall en överlagring som gör dem unika.
