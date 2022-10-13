@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.0](https://github.com/cave-bjornson/Net22-OOP-Inheritance/compare/v0.1.0...v0.2.0) (2022-10-13)
+
+
+### Features
+
+* add 3 inherited classes ([d386389](https://github.com/cave-bjornson/Net22-OOP-Inheritance/commit/d386389631315d76810265446337377f4bb6fa39))
+* update base class ([598edd1](https://github.com/cave-bjornson/Net22-OOP-Inheritance/commit/598edd1d661cfe9c510e568aa0bf229bbb33b236))
+
 ## [0.1.0](https://github.com/cave-bjornson/Net22-OOP-Inheritance/compare/v0.0.0...v0.1.0) (2022-10-12)
 
 
