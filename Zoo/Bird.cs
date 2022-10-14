@@ -2,18 +2,20 @@
 
 public class Bird : Animal
 {
-    private static Action DefaultSound = () => Console.WriteLine("*Tweet Tweet!*");
+    protected event Action Song;
+
+    private static readonly Action defaultSong = () => Console.WriteLine("*Tweet Tweet!*");
 
     public Bird()
     {
-        Sound += DefaultSound;
+        Song += defaultSong;
     }
 
-    public Bird(string species, string name, Gender gender, bool flightCapable, Action? sound = default)
+    public Bird(string species, string name, Gender gender, bool flightCapable, Action? song = default)
         : base(species, name, gender)
     {
         FlightCapable = flightCapable;
-        Sound += sound ?? DefaultSound;
+        Song += song ?? defaultSong;
     }
 
     public bool FlightCapable { get; init; } = true;
@@ -23,6 +25,11 @@ public class Bird : Animal
         var movementString = FlightCapable ? "flies around! *flap flap*" : "waddles about! *waddle, waddle*";
         Console.WriteLine($"The {Species} {movementString}");
         base.Move();
+    }
+
+    public override void MakeSound()
+    {
+        Song?.Invoke();
     }
 
     public override string ToString()
