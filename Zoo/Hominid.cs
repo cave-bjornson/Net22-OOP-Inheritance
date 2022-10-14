@@ -14,5 +14,5 @@ public abstract class Hominid : Animal
     {
     }
 
-    protected abstract void Speak();
+    protected abstract void UseTool(object? tool);
 }
