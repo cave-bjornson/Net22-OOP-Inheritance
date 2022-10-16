@@ -1,5 +1,28 @@
 # Changelog
 
+## [2.0.0](https://github.com/cave-bjornson/Net22-OOP-Inheritance/compare/v1.0.0...v2.0.0) (2022-10-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* **test:** remove xunit
+
+### Features
+
+* add demo application ([2dbab79](https://github.com/cave-bjornson/Net22-OOP-Inheritance/commit/2dbab79a349ec78244af74969f2aac84ee0152ad))
+* improve bears anger messaging ([63d63e8](https://github.com/cave-bjornson/Net22-OOP-Inheritance/commit/63d63e8bc035f29523788bcfd481a97fa3057f22))
+* update procreation name generation ([d298626](https://github.com/cave-bjornson/Net22-OOP-Inheritance/commit/d29862635756b2fd1573633e41f9693ac095f535))
+
+
+### Bug Fixes
+
+* change random range for gender ([451d124](https://github.com/cave-bjornson/Net22-OOP-Inheritance/commit/451d124af86af232b33de0cf2bd605a9bd592244))
+
+
+### Build System
+
+* **test:** remove xunit ([8be7714](https://github.com/cave-bjornson/Net22-OOP-Inheritance/commit/8be771422a4cc5bc0b798e297dd0fb9744abbbdd))
+
 ## [1.0.0](https://github.com/cave-bjornson/Net22-OOP-Inheritance/compare/v0.2.0...v1.0.0) (2022-10-16)
 
 
