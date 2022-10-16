@@ -48,8 +48,8 @@ public abstract class Animal
 
         int len1 = animal1.Name.Length;
         int len2 = animal2.Name.Length;
-        string babyName = animal1.Name.Substring(0, len1 / 2) + animal2.Name.Substring(len2/ 2);
-        var babyGender = (Gender)new Random().Next(2);
+        string babyName = animal1.Name.Substring(0, len1 / 2) + animal2.Name.Substring(len2 / 2);
+        var babyGender = (Gender)Random.Shared.Next(1, 3);
         T animalBaby = new()
         {
             Name = babyName,
