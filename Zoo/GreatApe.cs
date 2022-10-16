@@ -20,7 +20,10 @@ public class GreatApe : Hominid
         {
             0 => "Eeek Eeek!",
             1 => "Mook mook!",
-            2 => "I daresay it will be a lovely weather this afternoon!"
+            2 => @"
+“Language is a process of free creation; its laws and principles are fixed, but
+the manner in which the principles of generation are used is free and infinitely
+varied. Even the interpretation and use of words involves a process of free creation.”"
         });
     }
 
