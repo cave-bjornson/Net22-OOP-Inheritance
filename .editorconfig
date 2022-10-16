@@ -31,6 +31,9 @@ dotnet_diagnostic.SA1640.severity = suggestion
 dotnet_diagnostic.SA1641.severity = suggestion
 dotnet_diagnostic.SA1600.severity = suggestion
 
+# SA1200: Using directives should be placed correctly
+dotnet_diagnostic.SA1200.severity = none
+
 [*.{cs,vb}]
 #### Naming styles ####
 
