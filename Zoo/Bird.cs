@@ -2,21 +2,32 @@
 
 public class Bird : Animal
 {
-    private static Action DefaultSound = () => Console.WriteLine("*Tweet Tweet!*");
-
-    public Bird()
+    public event Action Song
     {
-        Sound += DefaultSound;
+        add => SongEvents += value;
+        remove => SongEvents -= value;
     }
 
-    public Bird(string species, string name, Gender gender, bool flightCapable, Action? sound = default)
+    protected event Action SongEvents;
+
+    public Bird()
+        : this(string.Empty, string.Empty, Gender.Undetermined, true)
+    {
+    }
+
+    public Bird(string species, string name, Gender gender, bool flightCapable, Action? song = default)
         : base(species, name, gender)
     {
         FlightCapable = flightCapable;
-        Sound += sound ?? DefaultSound;
+        SongEvents += song ?? (() =>
+        {
+            Beep();
+            Beep();
+            WriteLine($"The {Species} {Name} sings. *Tweet Tweet!*");
+        });
     }
 
-    public bool FlightCapable { get; init; } = true;
+    public bool FlightCapable { get; init; }
 
     public override void Move()
     {
@@ -25,9 +36,8 @@ public class Bird : Animal
         base.Move();
     }
 
-    public override string ToString()
+    public override void MakeSound()
     {
-        return @$"{base.ToString()},
-\---{nameof(FlightCapable)}: {FlightCapable}";
+        SongEvents.Invoke();
     }
 }

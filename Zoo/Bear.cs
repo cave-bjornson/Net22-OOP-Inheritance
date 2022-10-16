@@ -20,10 +20,22 @@ public class Bear : Animal
 
     public void Poke(Animal poker)
     {
+        WriteLine($"The {poker.Species} {poker.Name} pokes the bear. It becomes angrier");
         AngerLevel++;
         if (AngerLevel > _angerLimit)
         {
-            // TODO kill other animal then eat if hungry.
+            WriteLine($"The bear is pissed off! It gives the {poker.Species} a big whop!");
+            if (poker is IPrey)
+            {
+                Move();
+                var prey = (IPrey)poker;
+                prey.Kill();
+                if (Hungry)
+                {
+                    WriteLine($"The bear got hungry so it eats the {poker.Species}! *Nom Nom*");
+                    Eat(prey);
+                }
+            }
         }
     }
 

@@ -6,23 +6,21 @@ namespace Zoo;
 
 public abstract class Animal
 {
-    protected event Action? Sound;
-
     protected Animal()
+        : this(string.Empty, string.Empty, Gender.Undetermined)
     {
     }
 
-    protected Animal(string species, string name, Gender gender, Action? sound = default)
+    protected Animal(string species, string name, Gender gender)
     {
         Species = species;
         Name = name;
         Gender = gender;
-        Sound = sound;
     }
 
-    public string Species { get; init; } = string.Empty;
+    public string Species { get; init; }
 
-    public string Name { get; init; } = string.Empty;
+    public string Name { get; init; }
 
     public Gender Gender { get; init; }
 
@@ -88,19 +86,10 @@ public abstract class Animal
         return Procreate((T)this, otherAnimal);
     }
 
-    public virtual void MakeSound()
-    {
-        Sound?.Invoke();
-    }
+    public abstract void MakeSound();
 
     public override string ToString()
     {
-        return @$"Class {this.GetType().Name}:
-\---{nameof(Species)}: {Species},
-\---{nameof(Name)}: {Name},
-\---{nameof(Gender)}: {Gender},
-\---{nameof(Alive)}: {Alive},
-\---{nameof(Hungry)}: {Hungry},
-\---{nameof(Tired)}: {Tired}";
+        return $"{nameof(Species)}: {Species}, {nameof(Name)}: {Name}, {nameof(Gender)}: {Gender}";
     }
 }
