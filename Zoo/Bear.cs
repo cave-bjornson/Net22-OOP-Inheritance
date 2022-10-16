@@ -20,39 +20,48 @@ public class Bear : Animal
 
     public void Poke(Animal poker)
     {
-        WriteLine($"The {poker.Species} {poker.Name} pokes the bear. It becomes angrier");
         AngerLevel++;
-        if (AngerLevel > _angerLimit)
+        string angerString = AngerLevel switch
         {
-            WriteLine($"The bear is pissed off! It gives the {poker.Species} a big whop!");
-            if (poker is IPrey)
+            0 => "calm",
+            1 => "irritated",
+            2 => "angry",
+            3 => "really angry",
+            > 3 => "mad"
+        };
+        WriteLine($"The {poker.Species} {poker.Name} pokes the bear. It becomes {angerString}");
+        if (AngerLevel <= _angerLimit)
+        {
+            return;
+        }
+
+        WriteLine($"The bear is pissed off! It gives the {poker.Species} a big whop!");
+        if (poker is IPrey)
+        {
+            var prey = (IPrey)poker;
+            prey.Kill();
+            if (Hungry)
             {
-                Move();
-                var prey = (IPrey)poker;
-                prey.Kill();
-                if (Hungry)
-                {
-                    WriteLine($"The bear got hungry so it eats the {poker.Species}! *Nom Nom*");
-                    Eat(prey);
-                }
+                WriteLine($"The bear got hungry so it eats the {poker.Species}! *Nom Nom*");
+                Eat(prey);
             }
         }
     }
 
     public override void Sleep()
     {
-        Console.WriteLine("The bear sleeps until next spring. ZZZzzz...");
+        WriteLine("The bear sleeps until next spring. ZZZzzz...");
         base.Sleep();
     }
 
     public override void Move()
     {
-        Console.WriteLine("The bear shuffles along and climbs a tree.");
+        WriteLine("The bear shuffles along and climbs a tree.");
         base.Move();
     }
 
     public override void MakeSound()
     {
-        Console.WriteLine("GROWL!");
+        WriteLine($"{Name}, the {Species}: GROWL!");
     }
 }
