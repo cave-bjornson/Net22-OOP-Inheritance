@@ -7,6 +7,7 @@ namespace Zoo;
 public abstract class Animal
 {
     protected Animal()
+        : this(string.Empty, string.Empty, Gender.Undetermined)
     {
     }
 
@@ -17,9 +18,9 @@ public abstract class Animal
         Gender = gender;
     }
 
-    public string Species { get; init; } = string.Empty;
+    public string Species { get; init; }
 
-    public string Name { get; init; } = string.Empty;
+    public string Name { get; init; }
 
     public Gender Gender { get; init; }
 
@@ -89,12 +90,6 @@ public abstract class Animal
 
     public override string ToString()
     {
-        return @$"Class {this.GetType().Name}:
-\---{nameof(Species)}: {Species},
-\---{nameof(Name)}: {Name},
-\---{nameof(Gender)}: {Gender},
-\---{nameof(Alive)}: {Alive},
-\---{nameof(Hungry)}: {Hungry},
-\---{nameof(Tired)}: {Tired}";
+        return $"{nameof(Species)}: {Species}, {nameof(Name)}: {Name}, {nameof(Gender)}: {Gender}";
     }
 }
