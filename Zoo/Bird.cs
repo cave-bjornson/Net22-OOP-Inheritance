@@ -19,12 +19,7 @@ public class Bird : Animal
         : base(species, name, gender)
     {
         FlightCapable = flightCapable;
-        SongEvents += song ?? (() =>
-        {
-            Beep();
-            Beep();
-            WriteLine($"The {Species} {Name} sings. *Tweet Tweet!*");
-        });
+        SongEvents += song ?? (() => WriteLine($"The {Species} {Name} sings. *Tweet Tweet!*"));
     }
 
     public bool FlightCapable { get; init; }
